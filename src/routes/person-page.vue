@@ -45,7 +45,7 @@
           :key="nameIndex"
         >
           <DashTile
-            v-for="(letter, dashIndex) in name"
+            v-for="(_, dashIndex) in name"
             :key="`dash-${nameIndex}-${dashIndex}`"
             :text="
               shuffledLetters[dashLetters[`dash-${nameIndex}-${dashIndex}`]]
@@ -123,13 +123,13 @@ const correctName = getCleanName(person.value[getLang].name);
 const dashLetters = ref<{ [key: string]: string }>({});
 const cheatOn = ref(false);
 splitName.forEach((name, nameIndex) => {
-  name.split("").forEach((letter, letterIndex) => {
+  name.split("").forEach((_, letterIndex) => {
     dashLetters.value[`dash-${nameIndex}-${letterIndex}`] = "";
   });
 });
 const shuffledLetters: { [key: string]: string } = {};
 getShuffledLetters(person.value[getLang].name, getLang).forEach(
-  (letter, index) => (shuffledLetters["letter-" + index] = letter)
+  (letter, index) => (shuffledLetters["letter-" + index] = letter),
 );
 
 const handleNavigationButtonClick = async (direction: string) => {

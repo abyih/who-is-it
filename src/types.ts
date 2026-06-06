@@ -5,9 +5,9 @@ export type AlertTypeOptions = {
   icon: any;
 };
 
-export type AlertType {
+export type AlertType = {
   info: AlertTypeOptions;
   success: AlertTypeOptions;
   warning: AlertTypeOptions;
   danger: AlertTypeOptions;
-}
+};

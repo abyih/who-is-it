@@ -2,7 +2,7 @@
   <Header />
   <div class="w-full p-10 grid md:grid-cols-2 gap-5">
     <LevelCard
-      v-for="(level, index) in getLevels"
+      v-for="(_, index) in getLevels"
       :key="index"
       :levelId="index"
       :childhood="childhood"
@@ -26,7 +26,7 @@ const childhood = ref(route.params.childhood == "childhood");
 const getLevels = computed(() => {
   return childhood.value
     ? levels.filter(
-        (level) => level.people.filter((person) => person.childhood).length > 0
+        (level) => level.people.filter((person) => person.childhood).length > 0,
       )
     : levels;
 });
